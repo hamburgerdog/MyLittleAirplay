@@ -2,48 +2,26 @@
   <div>
     <splice-bar :info="info"></splice-bar>
     <div class="list-box">
-      <div>
-        <van-image
-          width="8rem"
-          height="7rem"
-          fit="cover"
-          radius="0.3rem"
-          src="https://img01.yzcdn.cn/vant/cat.jpeg"
-        />
-      </div>
+      <play-list-card :listCard="{ info: '' }"></play-list-card>
       <div class="list-info">
         <p>20<sup>+</sup></p>
         <p>AIR DAILY</p>
         <p>没有闹钟的假日便是最好的假日</p>
         <p>来自假日编辑Fish</p>
       </div>
-      <div class="list-card">
-        <van-image
-          width="8rem"
-          height="7rem"
-          fit="cover"
-          radius="0.3rem"
-          src="https://img01.yzcdn.cn/vant/cat.jpeg"
-        />
-        <p>刷街必备 | 街头最酷的仔BGM</p>
-      </div>
-      <div class="list-card">
-        <van-image
-          width="8rem"
-          height="7rem"
-          fit="cover"
-          radius="0.3rem"
-          src="https://img01.yzcdn.cn/vant/cat.jpeg"
-        />
-        <p>给打工人：五月请对我好一点</p>
-      </div>
+      <play-list-card
+        :listCard="{ info: '刷街必备 | 街头最酷的仔BGM' }"
+      ></play-list-card>
+      <play-list-card
+        :listCard="{ info: '给打工人：五月请对我好一点' }"
+      ></play-list-card>
     </div>
   </div>
 </template>
 
 <script>
-import { Image as VanImage } from 'vant';
 import SpliceBar from './SpliceBar.vue';
+import PlayListCard from './PlayListCard.vue';
 
 export default {
   data() {
@@ -55,36 +33,13 @@ export default {
     };
   },
   components: {
-    VanImage,
     SpliceBar,
+    PlayListCard,
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.list-head {
-  padding: 0;
-  margin: 0 {
-    top: 0.4rem;
-  }
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  color: white;
-  font-size: 0.5rem;
-
-  span {
-    font-size: 1.4rem;
-    height: 2rem;
-  }
-
-  p span {
-    font-size: 0.8rem;
-    font-weight: 500;
-  }
-}
-
 .list-box {
   display: flex;
   flex-direction: row;
@@ -127,15 +82,6 @@ export default {
       font-size: 0.7rem;
       line-height: 0.8rem;
       letter-spacing: 0.01rem;
-    }
-  }
-  .list-card {
-    p {
-      padding: 0;
-      margin: 0;
-      width: 7.2rem;
-      color: white;
-      font-size: 0.7rem;
     }
   }
 }
