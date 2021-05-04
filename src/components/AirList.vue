@@ -23,20 +23,20 @@ export default {
   data() {
     return {
       info: {
-        engText: 'ARI Playlist',
+        engText: 'AIR Playlist',
         zhText: '专辑',
       },
       listCard1: {
         info: '',
-        imgUrl: 'http://localhost:8080/album/img/7',
+        imgUrl: `${this.GLOBAL.BASE_URL}/album/img/7`,
       },
       listCard2: {
         info: '總在一星期 有一天真的不想返工',
-        imgUrl: 'http://localhost:8080/album/img/11',
+        imgUrl: `${this.GLOBAL.BASE_URL}/album/img/11`,
       },
       listCard3: {
         info: '在动物园散步才是正经事',
-        imgUrl: 'http://localhost:8080/album/img/9',
+        imgUrl: `${this.GLOBAL.BASE_URL}/album/img/9`,
       },
     };
   },

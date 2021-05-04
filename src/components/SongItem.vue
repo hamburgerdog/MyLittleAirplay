@@ -6,12 +6,12 @@
         height="2.2rem"
         radius=".4rem"
         fit="cover"
-        src="https://img01.yzcdn.cn/vant/cat.jpeg"
+        :src="`${this.GLOBAL.BASE_URL}/album/img/${song.albumId}`"
       ></van-image>
     </div>
     <div class="song-info">
       <p>{{ song.songName }}</p>
-      <p>{{ song.albumId }}</p>
+      <p>{{ albumName }}</p>
     </div>
     <div class="more">
       <van-icon name="ellipsis" />
@@ -20,14 +20,27 @@
 </template>
 
 <script>
+import axios from 'axios';
 import { Image as VanImage, Icon as VanIcon } from 'vant';
 
 export default {
+  data() {
+    return {
+      albumName: '',
+    };
+  },
   components: {
     VanImage,
     VanIcon,
   },
   props: ['song'],
+  beforeMount() {
+    axios
+      .get(`${this.GLOBAL.BASE_URL}/album/name/${this.song.albumId}`)
+      .then((response) => {
+        this.albumName = response.data;
+      });
+  },
 };
 </script>
 
@@ -53,7 +66,7 @@ export default {
 
   p:nth-child(1) {
     color: white;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
   p:nth-child(2) {
     color: rgba($color: white, $alpha: 0.4);

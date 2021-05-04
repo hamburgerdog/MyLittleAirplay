@@ -30,7 +30,7 @@ export default {
     SongItem,
   },
   beforeMount() {
-    axios.get('http://localhost:8080/song/random').then((response) => {
+    axios.get(`${this.GLOBAL.BASE_URL}/song/random`).then((response) => {
       this.songs = response.data;
     });
   },

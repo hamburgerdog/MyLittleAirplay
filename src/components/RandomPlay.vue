@@ -49,9 +49,9 @@ export default {
   },
   data() {
     return {
-      randomImage1: 'http://localhost:8080/album/img/4',
-      randomImage2: 'http://localhost:8080/album/img/6',
-      randomImage3: 'http://localhost:8080/album/img/5',
+      randomImage1: `${this.GLOBAL.BASE_URL}/album/img/4`,
+      randomImage2: `${this.GLOBAL.BASE_URL}/album/img/6`,
+      randomImage3: `${this.GLOBAL.BASE_URL}/album/img/5`,
     };
   },
 };

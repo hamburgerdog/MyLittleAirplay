@@ -22,7 +22,7 @@ export default {
         name: '下了两天雨',
         artist: 'my little airport ',
         url: mp3,
-        cover: 'http://localhost:8080/album/img/2', // prettier-ignore
+        cover: `${this.GLOBAL.BASE_URL}/album/img/2`, // prettier-ignore
       },
     };
   },

@@ -11,12 +11,18 @@
 </template>
 <script>
 import { Search } from 'vant';
+
+import Vue from 'vue';
+import global_ from './Global.vue';
+
 import MainHead from './components/MyHead.vue';
 import MainSwipe from './components/MainSwipe.vue';
 import RandomPlay from './components/RandomPlay.vue';
-import AriList from './components/AriList.vue';
+import AriList from './components/AirList.vue';
 import SongList from './components/SongsList.vue';
 import MusicPlayer from './components/MusicPlayer.vue';
+
+Vue.prototype.GLOBAL = global_;
 
 export default {
   components: {
