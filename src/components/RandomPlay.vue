@@ -7,16 +7,16 @@
           height="3.5rem"
           radius="0.5rem"
           fit="cover"
-          src="https://img01.yzcdn.cn/vant/cat.jpeg"
+          :src="randomImage1"
         />
       </div>
       <div>
         <van-image
-          width="4rem"
-          height="4rem"
+          width="3.8rem"
+          height="3.8rem"
           radius="0.8rem"
           fit="cover"
-          src="https://img01.yzcdn.cn/vant/cat.jpeg"
+          :src="randomImage2"
         />
       </div>
       <div>
@@ -25,7 +25,7 @@
           height="3.5rem"
           radius="0.5rem"
           fit="cover"
-          src="https://img01.yzcdn.cn/vant/cat.jpeg"
+          :src="randomImage3"
         />
       </div>
     </div>
@@ -46,6 +46,13 @@ export default {
   components: {
     VanImage,
     VanIcon,
+  },
+  data() {
+    return {
+      randomImage1: 'http://localhost:8080/album/img/4',
+      randomImage2: 'http://localhost:8080/album/img/6',
+      randomImage3: 'http://localhost:8080/album/img/5',
+    };
   },
 };
 </script>
@@ -71,6 +78,10 @@ export default {
     height: 4rem;
     left: 2.5rem;
     z-index: 3;
+
+    .van-image {
+      border: 0.1rem solid white;
+    }
   }
   div:nth-child(3) {
     background-color: #010101;

@@ -3,13 +3,15 @@
     <splice-bar :info="info"></splice-bar>
     <song-item
       class="song-item"
-      v-for="songId in songs"
-      :key="songId"
+      v-for="song in songs"
+      :key="song.songId"
+      :song="song"
     ></song-item>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
 import SpliceBar from './SpliceBar.vue';
 import SongItem from './SongItem.vue';
 
@@ -20,12 +22,17 @@ export default {
         engText: 'AIR Track',
         zhText: '歌曲',
       },
-      songs: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+      songs: [],
     };
   },
   components: {
     SpliceBar,
     SongItem,
+  },
+  beforeMount() {
+    axios.get('http://localhost:8080/song/random').then((response) => {
+      this.songs = response.data;
+    });
   },
 };
 </script>

@@ -6,23 +6,23 @@
       :lrcType="3"
       :fixed="true"
       :mini="false"
-    ></music-player>
+    ></music-player
+    >
   </div>
 </template>
 
 <script>
 import { APlayer as MusicPlayer } from '@moefe/vue-aplayer';
+import mp3 from '../assets/mock/下了两天雨.mp3';
 
 export default {
   data() {
     return {
       audio: {
-        name: '东西（Cover：林俊呈）',
-        artist: '纳豆',
-        url: 'https://cdn.moefe.org/music/hls/frozen.m3u8',
-        cover: 'https://p1.music.126.net/n72JJkPg2-ENxhB-DsZ2AA==/109951163115400390.jpg?param=300y300', // prettier-ignore
-        lrc: 'https://cdn.moefe.org/music/lrc/thing.lrc',
-        type: 'customHls',
+        name: '下了两天雨',
+        artist: 'my little airport ',
+        url: mp3,
+        cover: 'http://localhost:8080/album/img/2', // prettier-ignore
       },
     };
   },

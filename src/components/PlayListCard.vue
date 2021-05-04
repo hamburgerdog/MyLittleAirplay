@@ -5,7 +5,7 @@
       height="7rem"
       fit="cover"
       radius="0.3rem"
-      src="https://img01.yzcdn.cn/vant/cat.jpeg"
+      :src="listCard.imgUrl"
     />
     <p>{{ listCard.info }}</p>
     <!-- 刷街必备 | 街头最酷的仔BGM -->

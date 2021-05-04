@@ -10,8 +10,8 @@
       ></van-image>
     </div>
     <div class="song-info">
-      <p>刻在我心底的名字</p>
-      <p>蔡依林/田馥甄</p>
+      <p>{{ song.songName }}</p>
+      <p>{{ song.albumId }}</p>
     </div>
     <div class="more">
       <van-icon name="ellipsis" />
@@ -27,6 +27,7 @@ export default {
     VanImage,
     VanIcon,
   },
+  props: ['song'],
 };
 </script>
 
@@ -43,7 +44,7 @@ export default {
 .song-info {
   display: flex;
   flex-direction: column;
-  letter-spacing: .05rem;
+  letter-spacing: 0.05rem;
   width: 75%;
   p {
     padding: 0;
@@ -59,8 +60,8 @@ export default {
     font-size: 0.6rem;
   }
 }
-.more{
-    color: rgba($color: white, $alpha: .4);
-    font-size: 1.2rem;
+.more {
+  color: rgba($color: white, $alpha: 0.4);
+  font-size: 1.2rem;
 }
 </style>

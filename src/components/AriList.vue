@@ -2,19 +2,15 @@
   <div>
     <splice-bar :info="info"></splice-bar>
     <div class="list-box">
-      <play-list-card :listCard="{ info: '' }"></play-list-card>
+      <play-list-card :listCard="listCard1"></play-list-card>
       <div class="list-info">
         <p>20<sup>+</sup></p>
         <p>AIR DAILY</p>
-        <p>没有闹钟的假日便是最好的假日</p>
-        <p>来自假日编辑Fish</p>
+        <p>睇不到谁都好,亦在风雨中赶路.在地上画满记号,有天可再拥抱</p>
+        <p></p>
       </div>
-      <play-list-card
-        :listCard="{ info: '刷街必备 | 街头最酷的仔BGM' }"
-      ></play-list-card>
-      <play-list-card
-        :listCard="{ info: '给打工人：五月请对我好一点' }"
-      ></play-list-card>
+      <play-list-card :listCard="listCard2"></play-list-card>
+      <play-list-card :listCard="listCard3"></play-list-card>
     </div>
   </div>
 </template>
@@ -29,6 +25,18 @@ export default {
       info: {
         engText: 'ARI Playlist',
         zhText: '专辑',
+      },
+      listCard1: {
+        info: '',
+        imgUrl: 'http://localhost:8080/album/img/7',
+      },
+      listCard2: {
+        info: '總在一星期 有一天真的不想返工',
+        imgUrl: 'http://localhost:8080/album/img/11',
+      },
+      listCard3: {
+        info: '在动物园散步才是正经事',
+        imgUrl: 'http://localhost:8080/album/img/9',
       },
     };
   },
@@ -52,7 +60,7 @@ export default {
 
   .list-info {
     width: 8rem;
-    height: 7rem;
+    height: 7.8rem;
 
     p {
       padding: 0;

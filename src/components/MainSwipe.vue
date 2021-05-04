@@ -7,10 +7,11 @@
       :autoplay="3000"
       :show-indicators="false"
     >
-      <van-swipe-item>1</van-swipe-item>
-      <van-swipe-item>2</van-swipe-item>
-      <van-swipe-item>3</van-swipe-item>
-      <van-swipe-item>4</van-swipe-item>
+      <van-swipe-item
+        v-for="swipe in Swipes"
+        :key="swipe.albumId"
+        :style="{ backgroundImage: `url(http://localhost:8080/album/img/${swipe.albumId})` }"
+      ></van-swipe-item>
     </van-swipe>
     <div class="indicators">
       <div
@@ -30,6 +31,20 @@ export default {
     return {
       current: 0,
       indicators: [{ id: 0 }, { id: 1 }, { id: 2 }, { id: 3 }],
+      Swipes: [
+        {
+          albumId: 3,
+        },
+        {
+          albumId: 1,
+        },
+        {
+          albumId: 8,
+        },
+        {
+          albumId: 16,
+        },
+      ],
     };
   },
   methods: {
@@ -52,9 +67,9 @@ export default {
 .van-swipe-item {
   color: #fff;
   font-size: 1rem;
-  line-height: 7.5rem;
+  height: 8.5rem;
   text-align: center;
-  background-color: #2f3031;
+  background-size: cover;
 }
 
 .indicators {
