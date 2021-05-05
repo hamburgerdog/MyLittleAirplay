@@ -58,7 +58,7 @@ export default {
   methods: {
     click() {
       axios.get(`${this.GLOBAL.BASE_URL}/song/random/1`).then((resp) => {
-        this.$emit('randomplay', resp.data[0]);
+        this.$eventBus.$emit('getRandomSong', resp.data[0]);
       });
     },
   },

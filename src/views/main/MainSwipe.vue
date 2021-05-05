@@ -1,27 +1,29 @@
 <template>
   <div>
-    <van-swipe
-      @change="onChange"
-      id="swipe"
-      class="my-swipe"
-      :autoplay="3000"
-      :show-indicators="false"
-    >
-      <van-swipe-item
-        v-for="swipe in Swipes"
-        :key="swipe.albumId"
-        :style="{
-          backgroundImage: `${url}${swipe.albumId}`,
-        }"
-      ></van-swipe-item>
-    </van-swipe>
-    <div class="indicators">
-      <div
-        v-for="item in indicators"
-        :key="item.id"
-        :class="current === item.id ? 'active-indicator' : 'custom-indicator'"
-      ></div>
-    </div>
+    <router-link tag="div">
+      <van-swipe
+        @change="onChange"
+        id="swipe"
+        class="my-swipe"
+        :autoplay="3000"
+        :show-indicators="false"
+      >
+        <van-swipe-item
+          v-for="swipe in Swipes"
+          :key="swipe.albumId"
+          :style="{
+            backgroundImage: `${url}${swipe.albumId}`,
+          }"
+        ></van-swipe-item>
+      </van-swipe>
+      <div class="indicators">
+        <div
+          v-for="item in indicators"
+          :key="item.id"
+          :class="current === item.id ? 'active-indicator' : 'custom-indicator'"
+        ></div>
+      </div>
+    </router-link>
   </div>
 </template>
 

@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     click() {
-      this.$emit('songitemfn', this.song);
+      this.$eventBus.$emit('getSongItemReply', this.song);
     },
   },
 };

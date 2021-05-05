@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import SpliceBar from './SpliceBar.vue';
-import PlayListCard from './PlayListCard.vue';
+import SpliceBar from '../../components/SpliceBar.vue';
+import PlayListCard from '../../components/PlayListCard.vue';
 
 export default {
   data() {

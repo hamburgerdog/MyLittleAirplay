@@ -14,7 +14,7 @@
 
 <script>
 import { Image } from 'vant';
-import faceImg from '../assets/mock/1.jpg';
+import faceImg from '../../assets/mock/1.jpg';
 
 export default {
   data() {
@@ -32,6 +32,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #1a1a1a;
 
   h2 {
     color: white;
