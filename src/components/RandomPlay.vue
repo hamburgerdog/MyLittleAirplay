@@ -34,12 +34,13 @@
         <h3>AIR Radio</h3>
         <p>随机心情推荐</p>
       </div>
-      <van-icon class="play-box" name="play-circle" />
+      <van-icon class="play-box" name="play-circle" @click="click" />
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
 import { Image as VanImage, Icon as VanIcon } from 'vant';
 
 export default {
@@ -53,6 +54,13 @@ export default {
       randomImage2: `${this.GLOBAL.BASE_URL}/album/img/6`,
       randomImage3: `${this.GLOBAL.BASE_URL}/album/img/5`,
     };
+  },
+  methods: {
+    click() {
+      axios.get(`${this.GLOBAL.BASE_URL}/song/random/1`).then((resp) => {
+        this.$emit('randomplay', resp.data[0]);
+      });
+    },
   },
 };
 </script>

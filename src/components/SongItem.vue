@@ -1,5 +1,5 @@
 <template>
-  <div class="song-box">
+  <div class="song-box" @click="click">
     <div class="song-img">
       <van-image
         width="2.2rem"
@@ -40,6 +40,11 @@ export default {
       .then((response) => {
         this.albumName = response.data;
       });
+  },
+  methods: {
+    click() {
+      this.$emit('songitemfn', this.song);
+    },
   },
 };
 </script>

@@ -3,10 +3,10 @@
     <main-head class="main-head"></main-head>
     <search class="search"></search>
     <main-swipe></main-swipe>
-    <random-play></random-play>
+    <random-play @randomplay="getRandomSong"></random-play>
     <ari-list></ari-list>
-    <song-list></song-list>
-    <music-player></music-player>
+    <song-list @songitemfn="getSongItemReply"></song-list>
+    <music-player :parentAudio="audio"></music-player>
   </div>
 </template>
 <script>
@@ -33,6 +33,44 @@ export default {
     AriList,
     SongList,
     MusicPlayer,
+  },
+  data() {
+    return {
+      audio: [
+        {
+          id: 0,
+          name: '欢迎来到我的小型飞机场1',
+          artist: 'my-little-airport',
+          url: ' ',
+          cover: `${this.GLOBAL.BASE_URL}/album/img/2`,
+          theme: '#1a1a1a',
+        },
+      ],
+      songIds: [0],
+    };
+  },
+  methods: {
+    addSong(load) {
+      if (this.songIds.includes(load.songId)) {
+        return;
+      }
+      const song = {
+        id: load.songId,
+        name: load.songName,
+        url: `${this.GLOBAL.BASE_URL}/${load.url}`,
+        cover: `${this.GLOBAL.BASE_URL}/${load.songCoverUrl}`,
+        artist: 'my-little-airport',
+        theme: '#1a1a1a',
+      };
+      this.songIds.push(song.id);
+      this.audio.push(song);
+    },
+    getSongItemReply(load) {
+      this.addSong(load);
+    },
+    getRandomSong(load) {
+      this.addSong(load);
+    },
   },
 };
 </script>

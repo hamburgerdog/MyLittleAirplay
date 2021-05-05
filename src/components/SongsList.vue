@@ -4,6 +4,7 @@
     <song-item
       class="song-item"
       v-for="song in songs"
+      v-on="$listeners"
       :key="song.songId"
       :song="song"
     ></song-item>
