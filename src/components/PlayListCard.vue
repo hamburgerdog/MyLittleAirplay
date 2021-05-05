@@ -1,10 +1,11 @@
 <template>
   <div class="list-card">
     <van-image
-      width="8rem"
-      height="7rem"
+      class="image"
+      :width="listCard.width"
+      :height="listCard.height"
+      :radius="listCard.radius"
       fit="cover"
-      radius="0.3rem"
       :src="listCard.imgUrl"
     />
     <p>{{ listCard.info }}</p>

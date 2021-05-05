@@ -1,33 +1,33 @@
 <template>
   <div>
-    <router-link tag="div">
-      <van-swipe
-        @change="onChange"
-        id="swipe"
-        class="my-swipe"
-        :autoplay="3000"
-        :show-indicators="false"
-      >
-        <van-swipe-item
-          v-for="swipe in Swipes"
-          :key="swipe.albumId"
-          :style="{
-            backgroundImage: `${url}${swipe.albumId}`,
-          }"
-        ></van-swipe-item>
-      </van-swipe>
-      <div class="indicators">
-        <div
-          v-for="item in indicators"
-          :key="item.id"
-          :class="current === item.id ? 'active-indicator' : 'custom-indicator'"
-        ></div>
-      </div>
-    </router-link>
+    <van-swipe
+      @change="onChange"
+      id="swipe"
+      class="my-swipe"
+      :autoplay="3000"
+      :show-indicators="false"
+    >
+      <van-swipe-item
+        v-for="swipe in Swipes"
+        :key="swipe.albumId"
+        :style="{
+          backgroundImage: `${url}${swipe.albumId}`,
+        }"
+        @click="goSwipeAlbum(swipe.albumId)"
+      ></van-swipe-item>
+    </van-swipe>
+    <div class="indicators">
+      <div
+        v-for="item in indicators"
+        :key="item.id"
+        :class="current === item.id ? 'active-indicator' : 'custom-indicator'"
+      ></div>
+    </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
 import { Swipe, SwipeItem } from 'vant';
 
 export default {
@@ -56,6 +56,14 @@ export default {
     onChange(index) {
       this.current = index;
     },
+    goSwipeAlbum(albumId) {
+      let album;
+      axios.get(`${this.GLOBAL.BASE_URL}/album/${albumId}`).then((response) => {
+        album = response.data;
+        this.$eventBus.$emit('go2Album', album);
+      });
+      this.$eventBus.$emit('changeRouter', `/album/${albumId}`);
+    },
   },
   components: {
     'van-swipe': Swipe,
@@ -66,6 +74,7 @@ export default {
 
 <style lang='scss' scoped>
 .my-swipe {
+  margin-top: 0.6rem;
   border-radius: 0.8rem;
 }
 

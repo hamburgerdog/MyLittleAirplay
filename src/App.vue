@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div>
     <router-view></router-view>
     <music-player :parentAudio="audio"></music-player>
   </div>
@@ -53,6 +53,9 @@ export default {
   mounted() {
     this.$eventBus.$on('getRandomSong', (load) => this.addSong(load));
     this.$eventBus.$on('getSongItemReply', (load) => this.addSong(load));
+    this.$eventBus.$on('changeRouter', (load) => {
+      this.$router.replace(load);
+    });
   },
   router,
 };
@@ -62,9 +65,4 @@ div {
   background-color: #1a1a1a;
 }
 
-.app {
-  display: flex;
-  flex-direction: column;
-  padding: 4.5rem 1rem 3.5rem 1rem;
-}
 </style>

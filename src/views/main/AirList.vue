@@ -29,14 +29,23 @@ export default {
       listCard1: {
         info: '',
         imgUrl: `${this.GLOBAL.BASE_URL}/album/img/7`,
+        width: '8rem',
+        height: '7rem',
+        radius: '0.3rem',
       },
       listCard2: {
         info: '總在一星期 有一天真的不想返工',
         imgUrl: `${this.GLOBAL.BASE_URL}/album/img/11`,
+        width: '8rem',
+        height: '7rem',
+        radius: '0.3rem',
       },
       listCard3: {
         info: '在动物园散步才是正经事',
         imgUrl: `${this.GLOBAL.BASE_URL}/album/img/9`,
+        width: '8rem',
+        height: '7rem',
+        radius: '0.3rem',
       },
     };
   },

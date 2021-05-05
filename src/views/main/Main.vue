@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="app">
     <main-head class="main-head"></main-head>
     <search></search>
     <main-swipe></main-swipe>
@@ -31,6 +31,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.app {
+  display: flex;
+  flex-direction: column;
+  padding: 4.5rem 1rem 3.5rem 1rem;
+}
+
 search {
   position: fixed;
   padding: 0;
