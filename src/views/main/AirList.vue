@@ -1,6 +1,8 @@
 <template>
   <div>
-    <splice-bar :info="info"></splice-bar>
+    <div @click="goToAlbumList">
+      <splice-bar :info="info"></splice-bar>
+    </div>
     <div class="list-box">
       <play-list-card :listCard="listCard1"></play-list-card>
       <div class="list-info">
@@ -55,6 +57,13 @@ export default {
   components: {
     SpliceBar,
     PlayListCard,
+  },
+  methods: {
+    goToAlbumList() {
+      this.$eventBus.$emit('changeRouter', {
+        path: '/albumList',
+      });
+    },
   },
 };
 </script>

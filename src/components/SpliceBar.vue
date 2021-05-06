@@ -1,10 +1,9 @@
 <template>
   <div class="list-head">
     <p>
-      <span>{{ info.engText }}</span
-      >_{{ info.zhText }}
+      <span>{{ info.engText }}</span>_{{ info.zhText }}
     </p>
-    <span>›</span>
+    <span class="list-icon">›</span>
   </div>
 </template>
 

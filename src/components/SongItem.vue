@@ -6,6 +6,7 @@
         height="2.2rem"
         radius=".4rem"
         fit="cover"
+        lazy-load
         :src="`${this.GLOBAL.BASE_URL}/album/img/${song.albumId}`"
       ></van-image>
     </div>

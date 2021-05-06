@@ -6,11 +6,13 @@
 </template>
 <script>
 import Vue from 'vue';
+import { Lazyload } from 'vant';
 import router from './router/index';
 import global_ from './Global.vue';
 
 import MusicPlayer from './views/main/MusicPlayer.vue';
 
+Vue.use(Lazyload);
 Vue.prototype.GLOBAL = global_;
 Vue.prototype.$eventBus = new Vue();
 
@@ -54,7 +56,7 @@ export default {
     this.$eventBus.$on('getRandomSong', (load) => this.addSong(load));
     this.$eventBus.$on('getSongItemReply', (load) => this.addSong(load));
     this.$eventBus.$on('changeRouter', (load) => {
-      this.$router.push((load.path));
+      this.$router.push(load.path);
     });
   },
   router,

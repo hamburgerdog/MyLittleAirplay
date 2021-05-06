@@ -1,6 +1,6 @@
 <template>
   <div>
-    <splice-bar class="bar" :info="info"></splice-bar>
+    <splice-bar :info="info"></splice-bar>
     <song-item
       class="song-item"
       v-for="song in songs"
@@ -39,6 +39,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .song-item {
   margin-top: 0.5rem;
 }
