@@ -1,5 +1,5 @@
 <template>
-  <div class="list-card">
+  <div class="list-card" @click="goToAlbum(listCard.albumId)">
     <van-image
       class="image"
       :width="listCard.width"
@@ -19,6 +19,13 @@ import { Image as VanImage } from 'vant';
 export default {
   components: {
     VanImage,
+  },
+  methods: {
+    goToAlbum(albumId) {
+      this.$eventBus.$emit('changeRouter', {
+        path: `/album/${albumId}`,
+      });
+    },
   },
   props: ['listCard'],
 };

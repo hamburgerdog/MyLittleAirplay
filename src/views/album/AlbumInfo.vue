@@ -18,7 +18,7 @@ export default {
     return {
       card: {
         info: '',
-        imgUrl: this.CardInfoFromParent.imgUrl,
+        imgUrl: '',
         width: '12rem',
         height: '10rem',
         radius: '1rem',
@@ -30,6 +30,11 @@ export default {
     vanIcon: Icon,
   },
   props: ['CardInfoFromParent'],
+  mounted() {
+    this.$eventBus.$on('getAlbumCoverUrl', (reply) => {
+      this.card.imgUrl = reply;
+    });
+  },
 };
 </script>
 

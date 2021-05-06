@@ -58,7 +58,6 @@ export default {
     goSwipeAlbum(albumId) {
       this.$eventBus.$emit('changeRouter', {
         path: `/album/${albumId}`,
-        albumId,
       });
     },
   },

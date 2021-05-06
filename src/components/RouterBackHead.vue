@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <van-icon name="arrow-left" />
+    <van-icon name="arrow-left" @click="changeRoute" />
     <nobr>{{ HeaderFromParent.text }}</nobr>
     <div class="head-right-icon">
       <van-icon name="share" />
@@ -15,6 +15,11 @@ import { Icon } from 'vant';
 export default {
   components: {
     vanIcon: Icon,
+  },
+  methods: {
+    changeRoute() {
+      this.$router.go(-1);
+    },
   },
   props: ['HeaderFromParent'],
 };

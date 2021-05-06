@@ -1,6 +1,6 @@
 <template>
   <div>
-    <splice-bar :info="info"></splice-bar>
+    <splice-bar class="bar" :info="info"></splice-bar>
     <song-item
       class="song-item"
       v-for="song in songs"
@@ -13,8 +13,8 @@
 
 <script>
 import axios from 'axios';
-import SpliceBar from './SpliceBar.vue';
-import SongItem from './SongItem.vue';
+import SpliceBar from '../../components/SpliceBar.vue';
+import SongItem from '../../components/SongItem.vue';
 
 export default {
   data() {
@@ -31,7 +31,7 @@ export default {
     SongItem,
   },
   beforeMount() {
-    axios.get(`${this.GLOBAL.BASE_URL}/song/random`).then((response) => {
+    axios.get(`${this.GLOBAL.BASE_URL}/song/random/5`).then((response) => {
       this.songs = response.data;
     });
   },

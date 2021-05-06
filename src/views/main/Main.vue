@@ -11,7 +11,7 @@
 
 <script>
 import Search from '../../components/MySearch.vue';
-import SongList from '../../components/SongsList.vue';
+import SongList from './SongsList.vue';
 
 import MainHead from './MainHead.vue';
 import MainSwipe from './MainSwipe.vue';
@@ -47,8 +47,9 @@ search {
 .main-head {
   position: fixed;
   top: 0;
+  left: 0.8rem;
+  height: 4rem;
   z-index: 4;
-  padding: 0 1rem;
-  width: 80%;
+  width: 91%;
 }
 </style>

@@ -23,7 +23,7 @@ export default {
       audio: [
         {
           id: 0,
-          name: '欢迎来到我的小型飞机场1',
+          name: '欢迎来到我的小型飞机场',
           artist: 'my-little-airport',
           url: ' ',
           cover: `${this.GLOBAL.BASE_URL}/album/img/2`,
@@ -54,8 +54,7 @@ export default {
     this.$eventBus.$on('getRandomSong', (load) => this.addSong(load));
     this.$eventBus.$on('getSongItemReply', (load) => this.addSong(load));
     this.$eventBus.$on('changeRouter', (load) => {
-      this.$router.replace(load.path);
-      this.$router.albumId = load.albumId;
+      this.$router.push((load.path));
     });
   },
   router,

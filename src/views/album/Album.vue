@@ -4,7 +4,7 @@
     <div class="app">
       <search class="search"></search>
       <info :CardInfoFromParent="CardInfo"></info>
-      <album-songs></album-songs>
+      <album-songs class="song-list"></album-songs>
     </div>
   </div>
 </template>
@@ -39,17 +39,18 @@ export default {
     AlbumSongs,
   },
   mounted() {
-    axios.get(`${this.GLOBAL.BASE_URL}/album/${this.$router.albumId}`).then(
-      (response) => {
-        console.log(response.data);
-        this.CardInfo.imgUrl = `${this.GLOBAL.BASE_URL}/album/${response.data.albumId}`;
-        console.log(this.AlbumInfoMap.get(`${response.data.albumId}`));
+    axios
+      .get(`${this.GLOBAL.BASE_URL}/album/${this.$route.params.id}`)
+      .then((response) => {
+        this.$eventBus.$emit(
+          'getAlbumCoverUrl',
+          `${this.GLOBAL.ALBUM_COVER_URL}/${response.data.albumCoverUrl}`,
+        );
         const albumInfo = this.AlbumInfoMap.get(`${response.data.albumId}`);
         this.Header.text = albumInfo.cardText;
         this.CardInfo.cardText = albumInfo.cardText;
         this.CardInfo.cardFooter = albumInfo.cardFooter;
-      },
-    );
+      });
   },
 };
 </script>
@@ -66,5 +67,8 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+.song-list {
+  width: 95%;
 }
 </style>

@@ -23,8 +23,8 @@ export default {
   components: {
     SongItem,
   },
-  beforeMount() {
-    axios.get(`${this.GLOBAL.BASE_URL}/song/random`).then((response) => {
+  mounted() {
+    axios.get(`${this.GLOBAL.BASE_URL}/album/albumSongs/${this.$route.params.id}`).then((response) => {
       this.songs = response.data;
     });
   },
