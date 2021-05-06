@@ -10,28 +10,26 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 import AlbumHead from '../../components/RouterBackHead.vue';
 import Search from '../../components/MySearch.vue';
 import Info from './AlbumInfo.vue';
 import AlbumSongs from './AlbumSongsList.vue';
+import AlbumInfoMap from '../../assets/mock/AlbumData';
 
 export default {
   data() {
     return {
       CardInfo: {
-        cardText: '如果不出远门，长假期间适合补一补的超长老番',
-        imgUrl: 'https://img01.yzcdn.cn/vant/cat.jpeg',
-        cardFooter:
-          '基础用法与原生 img 标签一致，可以设置 src、width、height、alt 等原生属性。',
-      },
-      AlbumInfo: {
-        albumId: 0,
-        albumName: '',
-        albumCoverUrl: '',
+        cardText: 'loading...',
+        imgUrl: '',
+        cardFooter: 'loading......',
       },
       Header: {
-        text: '如果不出远门，长假期间适合补一补的超长老番',
+        text: 'loading... ',
       },
+      AlbumInfoMap,
     };
   },
   components: {
@@ -39,6 +37,19 @@ export default {
     Search,
     Info,
     AlbumSongs,
+  },
+  mounted() {
+    axios.get(`${this.GLOBAL.BASE_URL}/album/${this.$router.albumId}`).then(
+      (response) => {
+        console.log(response.data);
+        this.CardInfo.imgUrl = `${this.GLOBAL.BASE_URL}/album/${response.data.albumId}`;
+        console.log(this.AlbumInfoMap.get(`${response.data.albumId}`));
+        const albumInfo = this.AlbumInfoMap.get(`${response.data.albumId}`);
+        this.Header.text = albumInfo.cardText;
+        this.CardInfo.cardText = albumInfo.cardText;
+        this.CardInfo.cardFooter = albumInfo.cardFooter;
+      },
+    );
   },
 };
 </script>

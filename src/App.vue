@@ -54,7 +54,8 @@ export default {
     this.$eventBus.$on('getRandomSong', (load) => this.addSong(load));
     this.$eventBus.$on('getSongItemReply', (load) => this.addSong(load));
     this.$eventBus.$on('changeRouter', (load) => {
-      this.$router.replace(load);
+      this.$router.replace(load.path);
+      this.$router.albumId = load.albumId;
     });
   },
   router,
@@ -64,5 +65,4 @@ export default {
 div {
   background-color: #1a1a1a;
 }
-
 </style>

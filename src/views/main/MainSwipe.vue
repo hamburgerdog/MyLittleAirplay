@@ -27,7 +27,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 import { Swipe, SwipeItem } from 'vant';
 
 export default {
@@ -57,12 +56,10 @@ export default {
       this.current = index;
     },
     goSwipeAlbum(albumId) {
-      let album;
-      axios.get(`${this.GLOBAL.BASE_URL}/album/${albumId}`).then((response) => {
-        album = response.data;
-        this.$eventBus.$emit('go2Album', album);
+      this.$eventBus.$emit('changeRouter', {
+        path: `/album/${albumId}`,
+        albumId,
       });
-      this.$eventBus.$emit('changeRouter', `/album/${albumId}`);
     },
   },
   components: {
