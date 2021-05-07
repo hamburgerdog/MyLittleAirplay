@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <main-head class="main-head"></main-head>
-    <search></search>
+    <search class="main-search"></search>
     <main-swipe></main-swipe>
     <random-play></random-play>
     <ari-list></ari-list>
@@ -41,7 +41,9 @@ search {
   position: fixed;
   padding: 0;
   margin: 0.5rem 0;
-  z-index: 4;
+}
+.main-search{
+  z-index: 5;
 }
 
 .main-head {
@@ -49,7 +51,7 @@ search {
   top: 0;
   left: 0.8rem;
   height: 4rem;
-  z-index: 4;
+  z-index: 10;
   width: 91%;
 }
 </style>
