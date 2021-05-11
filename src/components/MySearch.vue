@@ -9,7 +9,7 @@
       class="search"
       :error="true"
       v-model="search"
-      @search="toSearch"
+      @keyup="toSearchWithTHORTTLE"
       :clearable="true"
     ></search>
     <div class="search-info">
@@ -28,6 +28,18 @@
 import axios from 'axios';
 import { Search } from 'vant';
 
+//  搜索框防抖
+function debounce(fn, delay = 500) {
+  let timeout;
+  // eslint-disable-next-line
+  return function (event) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      fn.call(this, event);
+    }, delay);
+  };
+}
+
 export default {
   data() {
     return {
@@ -36,17 +48,22 @@ export default {
       enterClassName: ' my-search-enter',
     };
   },
+  created() {
+    // 添加节流方法
+    this.toSearchWithTHORTTLE = this.GLOBAL.THORTTLE(this.searchSong, 1000);
+  },
   components: {
     Search,
   },
   methods: {
     inSearch() {
       this.$refs.eMySearch.className += this.enterClassName;
-      console.log(this.$refs.eMySearch.classList);
     },
-    toSearch() {
-      if (this.search === '') return;
-      console.log('search....');
+    searchSong() {
+      if (this.search === '') {
+        this.searchInfos = [];
+        return;
+      }
       axios
         .get(`${this.GLOBAL.BASE_URL}/song/name/${this.search}`)
         .then((response) => {
@@ -59,6 +76,25 @@ export default {
           }
         });
     },
+    //  添加防抖方法
+    // eslint-disable-next-line
+    toSearch: debounce(function () {
+      if (this.search === '') {
+        this.searchInfos = [];
+        return;
+      }
+      axios
+        .get(`${this.GLOBAL.BASE_URL}/song/name/${this.search}`)
+        .then((response) => {
+          this.searchInfos = response.data;
+          if (this.searchInfos.length === 0) {
+            this.searchInfos.push({
+              songId: 0,
+              songName: '找不到歌曲请重新搜索',
+            });
+          }
+        }, 1000);
+    }),
     searchCancel() {
       this.$refs.eMySearch.className = this.$refs.eMySearch.className.slice(
         0,
@@ -100,7 +136,7 @@ export default {
   padding: 1.3rem 4%;
   position: relative;
   top: -1.2rem;
-  height: 12rem;
+  height: 6rem;
   width: 92%;
   overflow-y: scroll;
   border-radius: 1.5rem;
