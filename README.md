@@ -2,6 +2,8 @@
 
 > 一个仿照 MOO v1.0 的 my little airpot 专属播放器，制作该播放器纯粹出于自己对 MLA 和 MOO 的喜爱，也方便自己在手机上听到 MLA 的歌曲。当前 **不太适配PC端** 且本项目仅限于学习！！！！！！！！！
 
+![g09rff.png](https://z3.ax1x.com/2021/05/12/g09rff.png)
+
 ## :hammer: 技术选型
 
 * :lipstick: 【组件库】     使用`Vant`快速开发，实现轮播图、懒加载等功能；
@@ -42,7 +44,21 @@ cd '项目'
 	yarn serve
 ```
 
-## 写在最后 :m:
+## :flower_playing_cards: 项目展示
+
+**主页与功能展示**
+
+![g0S4Ds.jpg](https://z3.ax1x.com/2021/05/12/g0S4Ds.jpg)
+
+**专辑页面展示**
+
+![g09Ces.jpg](https://z3.ax1x.com/2021/05/12/g09Ces.jpg)
+
+**页面模拟大图**
+
+![g09MwR.png](https://z3.ax1x.com/2021/05/12/g09MwR.png)
+
+## :m: 写在最后 
 
 > 有一大段我的狗屁，请随意跳过
 
