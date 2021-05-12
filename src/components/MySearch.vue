@@ -10,6 +10,7 @@
       :error="true"
       v-model="search"
       @keyup="toSearchWithTHORTTLE"
+      @search="toSearch"
       :clearable="true"
     ></search>
     <div class="search-info">
@@ -40,6 +41,23 @@ function debounce(fn, delay = 500) {
   };
 }
 
+//  搜索歌曲功能
+function searchSong() {
+  //  防止空字符串搜索
+  if (!this.canSearch) return;
+  axios
+    .get(`${this.GLOBAL.BASE_URL}/song/name/${this.search}`)
+    .then((response) => {
+      this.searchInfos = response.data;
+      if (this.searchInfos.length === 0) {
+        this.searchInfos.push({
+          songId: 0,
+          songName: '找不到歌曲请重新搜索',
+        });
+      }
+    });
+}
+
 export default {
   data() {
     return {
@@ -47,6 +65,14 @@ export default {
       search: '',
       enterClassName: ' my-search-enter',
     };
+  },
+  watch: {
+    // eslint-disable-next-line
+    search: debounce(function (newValue) {
+      if (newValue === '') {
+        this.searchInfos = this.searchInfos.slice(0, 0);
+      }
+    }, 300),
   },
   created() {
     // 添加节流方法
@@ -59,46 +85,18 @@ export default {
     inSearch() {
       this.$refs.eMySearch.className += this.enterClassName;
     },
-    searchSong() {
-      if (this.search === '') {
-        this.searchInfos = [];
-        return;
-      }
-      axios
-        .get(`${this.GLOBAL.BASE_URL}/song/name/${this.search}`)
-        .then((response) => {
-          this.searchInfos = response.data;
-          if (this.searchInfos.length === 0) {
-            this.searchInfos.push({
-              songId: 0,
-              songName: '找不到歌曲请重新搜索',
-            });
-          }
-        });
+    canSearch() {
+      return this.search !== '';
     },
+    searchSong,
     //  添加防抖方法
     // eslint-disable-next-line
-    toSearch: debounce(function () {
-      if (this.search === '') {
-        this.searchInfos = [];
-        return;
-      }
-      axios
-        .get(`${this.GLOBAL.BASE_URL}/song/name/${this.search}`)
-        .then((response) => {
-          this.searchInfos = response.data;
-          if (this.searchInfos.length === 0) {
-            this.searchInfos.push({
-              songId: 0,
-              songName: '找不到歌曲请重新搜索',
-            });
-          }
-        }, 1000);
-    }),
+    toSearch: debounce(searchSong, 1000),
     searchCancel() {
       this.$refs.eMySearch.className = this.$refs.eMySearch.className.slice(
         0,
-        -this.enterClassName.length,
+        // eslint-disable-next-line
+        -this.enterClassName.length
       );
       this.searchInfos = [];
     },
