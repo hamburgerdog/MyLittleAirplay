@@ -10,8 +10,6 @@
 </template>
 
 <script>
-import axios from 'axios';
-
 import AlbumHead from '../../components/RouterBackHead.vue';
 import Search from '../../components/MySearch.vue';
 import Info from './AlbumInfo.vue';
@@ -39,18 +37,16 @@ export default {
     AlbumSongs,
   },
   mounted() {
-    axios
-      .get(`${this.GLOBAL.BASE_URL}/album/${this.$route.params.id}`)
-      .then((response) => {
-        this.$eventBus.$emit(
-          'getAlbumCoverUrl',
-          `${this.GLOBAL.ALBUM_COVER_URL}/${response.data.albumCoverUrl}`,
-        );
-        const albumInfo = this.AlbumInfoMap.get(`${response.data.albumId}`);
-        this.Header.text = albumInfo.cardText;
-        this.CardInfo.cardText = albumInfo.cardText;
-        this.CardInfo.cardFooter = albumInfo.cardFooter;
-      });
+    this.$api.album.getAlbumById(this.$route.params.id).then((response) => {
+      this.$eventBus.$emit(
+        'getAlbumCoverUrl',
+        `${this.$base.albumCoverUrl}/${response.data.albumCoverUrl}`,
+      );
+      const albumInfo = this.AlbumInfoMap.get(`${response.data.albumId}`);
+      this.Header.text = albumInfo.cardText;
+      this.CardInfo.cardText = albumInfo.cardText;
+      this.CardInfo.cardFooter = albumInfo.cardFooter;
+    });
   },
 };
 </script>

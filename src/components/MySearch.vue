@@ -26,7 +26,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 import { Search } from 'vant';
 
 //  搜索框防抖
@@ -45,17 +44,16 @@ function debounce(fn, delay = 500) {
 function searchSong() {
   //  防止空字符串搜索
   if (!this.canSearch) return;
-  axios
-    .get(`${this.GLOBAL.BASE_URL}/song/name/${this.search}`)
-    .then((response) => {
-      this.searchInfos = response.data;
-      if (this.searchInfos.length === 0) {
-        this.searchInfos.push({
-          songId: 0,
-          songName: '找不到歌曲请重新搜索',
-        });
-      }
-    });
+  this.$api.song.searchSongByName(this.search).then((response) => {
+    console.log(response);
+    this.searchInfos = response.data;
+    if (this.searchInfos.length === 0) {
+      this.searchInfos.push({
+        songId: 0,
+        songName: '找不到歌曲请重新搜索',
+      });
+    }
+  });
 }
 
 export default {
@@ -76,7 +74,7 @@ export default {
   },
   created() {
     // 添加节流方法
-    this.toSearchWithTHORTTLE = this.GLOBAL.THORTTLE(this.searchSong, 1000);
+    this.toSearchWithTHORTTLE = this.$global.THORTTLE(this.searchSong, 1000);
   },
   components: {
     Search,

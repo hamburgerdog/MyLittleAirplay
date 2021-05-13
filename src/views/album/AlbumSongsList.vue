@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 import SongItem from '../../components/SongItem.vue';
 
 export default {
@@ -24,9 +23,11 @@ export default {
     SongItem,
   },
   mounted() {
-    axios.get(`${this.GLOBAL.BASE_URL}/album/albumSongs/${this.$route.params.id}`).then((response) => {
-      this.songs = response.data;
-    });
+    this.$api.album
+      .getSongsInAlbumById(this.$route.params.id)
+      .then((response) => {
+        this.songs = response.data;
+      });
   },
 };
 </script>

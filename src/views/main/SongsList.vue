@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 import SpliceBar from '../../components/SpliceBar.vue';
 import SongItem from '../../components/SongItem.vue';
 
@@ -31,7 +30,7 @@ export default {
     SongItem,
   },
   beforeMount() {
-    axios.get(`${this.GLOBAL.BASE_URL}/song/random/5`).then((response) => {
+    this.$api.song.getRandomSongsWithLimit(5).then((response) => {
       this.songs = response.data;
     });
   },
@@ -39,7 +38,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .song-item {
   margin-top: 0.5rem;
 }

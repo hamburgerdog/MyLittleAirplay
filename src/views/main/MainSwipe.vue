@@ -32,7 +32,7 @@ import { Swipe, SwipeItem } from 'vant';
 export default {
   data() {
     return {
-      url: `url(${this.GLOBAL.BASE_URL}/album/img/`,
+      url: `url(${this.$base.mlaUrl}/album/img/`,
       current: 0,
       indicators: [{ id: 0 }, { id: 1 }, { id: 2 }, { id: 3 }],
       Swipes: [

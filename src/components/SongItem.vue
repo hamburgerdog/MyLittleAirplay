@@ -7,7 +7,7 @@
         radius=".4rem"
         fit="cover"
         lazy-load
-        :src="`${this.GLOBAL.BASE_URL}/album/img/${song.albumId}`"
+        :src="`${this.base.mlaUrl}/album/img/${song.albumId}`"
       ></van-image>
     </div>
     <div class="song-info">
@@ -21,13 +21,14 @@
 </template>
 
 <script>
-import axios from 'axios';
 import { Image as VanImage, Icon as VanIcon } from 'vant';
+import base from '@/api/base';
 
 export default {
   data() {
     return {
       albumName: '',
+      base,
     };
   },
   components: {
@@ -36,11 +37,9 @@ export default {
   },
   props: ['song'],
   beforeMount() {
-    axios
-      .get(`${this.GLOBAL.BASE_URL}/album/name/${this.song.albumId}`)
-      .then((response) => {
-        this.albumName = response.data;
-      });
+    this.$api.album.getAlbumNameByAlbumId(this.song.albumId).then((response) => {
+      this.albumName = response.data;
+    });
   },
   methods: {
     click() {

@@ -40,7 +40,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 import { Image as VanImage, Icon as VanIcon } from 'vant';
 
 export default {
@@ -50,14 +49,14 @@ export default {
   },
   data() {
     return {
-      randomImage1: `${this.GLOBAL.BASE_URL}/album/img/4`,
-      randomImage2: `${this.GLOBAL.BASE_URL}/album/img/6`,
-      randomImage3: `${this.GLOBAL.BASE_URL}/album/img/5`,
+      randomImage1: `${this.$base.mlaUrl}/album/img/4`,
+      randomImage2: `${this.$base.mlaUrl}/album/img/6`,
+      randomImage3: `${this.$base.mlaUrl}/album/img/5`,
     };
   },
   methods: {
     click() {
-      axios.get(`${this.GLOBAL.BASE_URL}/song/random/1`).then((resp) => {
+      this.$api.song.getRandomSongsWithLimit(1).then((resp) => {
         this.$eventBus.$emit('getRandomSong', resp.data[0]);
       });
     },

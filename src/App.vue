@@ -5,16 +5,8 @@
   </div>
 </template>
 <script>
-import Vue from 'vue';
-import { Lazyload } from 'vant';
 import router from './router/index';
-import global_ from './Global.vue';
-
 import MusicPlayer from './views/main/MusicPlayer.vue';
-
-Vue.use(Lazyload);
-Vue.prototype.GLOBAL = global_;
-Vue.prototype.$eventBus = new Vue();
 
 export default {
   components: {
@@ -28,7 +20,7 @@ export default {
           name: '欢迎来到我的小型飞机场',
           artist: 'my-little-airport',
           url: ' ',
-          cover: `${this.GLOBAL.BASE_URL}/album/img/2`,
+          cover: `${this.$base.mlaUrl}/album/img/2`,
           theme: '#1a1a1a',
         },
       ],
@@ -43,8 +35,8 @@ export default {
       const song = {
         id: load.songId,
         name: load.songName,
-        url: `${this.GLOBAL.BASE_URL}/${load.url}`,
-        cover: `${this.GLOBAL.BASE_URL}/${load.songCoverUrl}`,
+        url: `${this.$base.mlaUrl}/${load.url}`,
+        cover: `${this.$base.mlaUrl}/${load.songCoverUrl}`,
         artist: 'my-little-airport',
         theme: '#1a1a1a',
       };

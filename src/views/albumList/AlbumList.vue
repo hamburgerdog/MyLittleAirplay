@@ -31,7 +31,6 @@
 
 <script>
 import { Image as VanImage } from 'vant';
-import axios from 'axios';
 import image from '../../assets/mock/albums.jpeg';
 import AppHead from '../../components/RouterBackHead.vue';
 
@@ -48,7 +47,7 @@ export default {
         imageUrl: image,
       },
       Albums: [],
-      AlbumCoverUrl: this.GLOBAL.ALBUM_COVER_URL,
+      AlbumCoverUrl: this.$base.albumCoverUrl,
     };
   },
   components: {
@@ -56,7 +55,7 @@ export default {
     VanImage,
   },
   mounted() {
-    axios.get(`${this.GLOBAL.BASE_URL}/album/albums`).then((response) => {
+    this.$api.album.getAlbums().then((response) => {
       this.Albums = response.data;
     });
   },
