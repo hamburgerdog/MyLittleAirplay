@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div class="app" @touchstart="handleTouchStart" @touchend="handleTouchEnd">
     <app-head :HeaderFromParent="Header"></app-head>
     <van-image
       class="albums-image"
@@ -48,6 +48,8 @@ export default {
       },
       Albums: [],
       AlbumCoverUrl: this.$base.albumCoverUrl,
+      startX: 0,
+      changeRouterX: 180,
     };
   },
   components: {
@@ -65,6 +67,14 @@ export default {
         path: `/album/${albumId}`,
       });
     },
+    handleTouchStart(e) {
+      this.startX = e.changedTouches[0].clientX;
+    },
+    handleTouchEnd(e) {
+      if (e.changedTouches[0].clientX - this.startX >= this.changeRouterX) {
+        this.$router.back();
+      }
+    },
   },
 };
 </script>
@@ -81,7 +91,7 @@ export default {
   flex-direction: column;
   align-items: center;
 
-  .hr{
+  .hr {
     width: 100%;
   }
 }

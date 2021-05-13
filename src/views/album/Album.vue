@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div @touchstart="handleTouchStart" @touchend="handleTouchEnd">
     <album-head :HeaderFromParent="Header"></album-head>
     <div class="app">
       <search class="search"></search>
@@ -28,6 +28,8 @@ export default {
         text: 'loading... ',
       },
       AlbumInfoMap,
+      startX: 0,
+      changeRouterX: 180,
     };
   },
   components: {
@@ -47,6 +49,16 @@ export default {
       this.CardInfo.cardText = albumInfo.cardText;
       this.CardInfo.cardFooter = albumInfo.cardFooter;
     });
+  },
+  methods: {
+    handleTouchStart(e) {
+      this.startX = e.changedTouches[0].clientX;
+    },
+    handleTouchEnd(e) {
+      if (e.changedTouches[0].clientX - this.startX >= this.changeRouterX) {
+        this.$router.back();
+      }
+    },
   },
 };
 </script>

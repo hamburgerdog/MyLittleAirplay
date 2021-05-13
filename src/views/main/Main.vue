@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div class="app" @touchstart="handleTouchStart" @touchend="handleTouchEnd">
     <main-head class="main-head"></main-head>
     <search class="main-search"></search>
     <main-swipe></main-swipe>
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Search from '../../components/MySearch.vue';
+import Search from '@/components/MySearch.vue';
 import SongList from './SongsList.vue';
 
 import MainHead from './MainHead.vue';
@@ -19,6 +19,12 @@ import RandomPlay from './RandomPlay.vue';
 import AriList from './AirList.vue';
 
 export default {
+  data() {
+    return {
+      startX: 0,
+      changeRouterX: 120,
+    };
+  },
   components: {
     MainHead,
     Search,
@@ -26,6 +32,16 @@ export default {
     RandomPlay,
     AriList,
     SongList,
+  },
+  methods: {
+    handleTouchStart(e) {
+      this.startX = e.changedTouches[0].clientX;
+    },
+    handleTouchEnd(e) {
+      if (this.startX - e.changedTouches[0].clientX >= this.changeRouterX) {
+        this.$router.push('/albumList');
+      }
+    },
   },
 };
 </script>
@@ -42,7 +58,7 @@ search {
   padding: 0;
   margin: 0.5rem 0;
 }
-.main-search{
+.main-search {
   z-index: 5;
 }
 
