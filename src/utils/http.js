@@ -3,8 +3,8 @@ import { Notify } from 'vant';
 
 const dangerTip = (msg) => {
   Notify({
-    type: msg,
-    message: '【请求失败】服务器错误',
+    background: '#fe5f64',
+    message: msg,
   });
 };
 

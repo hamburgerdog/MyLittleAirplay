@@ -43,7 +43,7 @@ function debounce(fn, delay = 500) {
 //  搜索歌曲功能
 function searchSong() {
   //  防止空字符串搜索
-  if (!this.canSearch) return;
+  if (!this.canSearch()) return;
   this.$api.song.searchSongByName(this.search).then((response) => {
     console.log(response);
     this.searchInfos = response.data;
