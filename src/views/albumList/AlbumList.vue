@@ -1,16 +1,23 @@
 <template>
-  <div class="app" @touchstart="handleTouchStart" @touchend="handleTouchEnd">
+  <div
+    class="app animate__animated animate__fadeIn"
+    @touchstart="handleTouchStart"
+    @touchend="handleTouchEnd"
+  >
     <app-head :HeaderFromParent="Header"></app-head>
-    <van-image
-      class="albums-image"
-      :width="Image.width"
-      :height="Image.height"
-      :src="Image.imageUrl"
-      fit="cover"
-      lazy-load
-      :radius="Image.radius"
-    />
-    <p class="albums-text">聖誕再多留一日</p>
+    <div>
+      <van-image
+        class="albums-image"
+        :width="Image.width"
+        :height="Image.height"
+        :src="Image.imageUrl"
+        fit="cover"
+        lazy-load
+        :radius="Image.radius"
+        @click="flipX"
+      />
+      <p class="albums-text">聖誕再多留一日</p>
+    </div>
     <div class="hr"></div>
     <div class="list" v-for="album in Albums" :key="album.albumId">
       <van-image
@@ -50,6 +57,7 @@ export default {
       AlbumCoverUrl: this.$base.albumCoverUrl,
       startX: 0,
       changeRouterX: 180,
+      canFlip: true,
     };
   },
   components: {
@@ -74,6 +82,22 @@ export default {
       if (e.changedTouches[0].clientX - this.startX >= this.changeRouterX) {
         this.$router.back();
       }
+    },
+    flipX(event) {
+      const delay = 3000;
+      this.$global.deBounceAddAnimate(
+        event.srcElement,
+        'animate__flipInX',
+        this.canFlip,
+        delay,
+      );
+      this.$toast.fail({
+        type: 'fail',
+        message: '这个专辑\n『不存在』',
+        overlay: true,
+        closeOnClickOverlay: true,
+        duration: delay,
+      });
     },
   },
 };

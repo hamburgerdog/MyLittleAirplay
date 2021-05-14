@@ -64,42 +64,25 @@ export default {
       });
       this.jello(e);
     },
-    addAnimateClass(element, animateName, delay = 3000) {
-      element.classList.add('animate__animated');
-      element.classList.add(animateName);
-      setTimeout(() => {
-        element.classList.remove(animateName);
-      }, delay);
-    },
-    debounce(fn, canRun, delay = 2000) {
-      if (!canRun) return;
-      // eslint-disable-next-line
-      canRun = false;
-      fn();
-      setTimeout(() => {
-        // eslint-disable-next-line
-        canRun = true;
-      }, delay);
-    },
     bounce(event) {
-      this.debounce(() => {
-        this.addAnimateClass(event.srcElement, 'animate__bounce');
-      }, this.canBouce);
+      this.$global.deBounceAddAnimate(
+        event.srcElement,
+        'animate__bounce',
+        this.canBouce,
+      );
     },
     jello(event) {
-      this.debounce(
-        () => {
-          this.addAnimateClass(event.srcElement, 'animate__jello');
-        },
+      this.$global.deBounceAddAnimate(
+        event.srcElement,
+        'animate__jello',
         this.canJello,
         500,
       );
     },
     flip(event) {
-      this.debounce(
-        () => {
-          this.addAnimateClass(event.srcElement.parentElement, 'animate__flip');
-        },
+      this.$global.deBounceAddAnimate(
+        event.srcElement.parentElement,
+        'animate__flip',
         this.canFlip,
         1000,
       );

@@ -1,5 +1,9 @@
 <template>
-  <div class="app" @touchstart="handleTouchStart" @touchend="handleTouchEnd">
+  <div
+    class="app animate__animated animate__fadeIn"
+    @touchstart="handleTouchStart"
+    @touchend="handleTouchEnd"
+  >
     <main-head class="main-head"></main-head>
     <search class="main-search"></search>
     <main-swipe></main-swipe>
@@ -47,6 +51,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.animate__animated .animate__fadeIn {
+  --animate-duration: 3s;
+}
+
 .app {
   display: flex;
   flex-direction: column;

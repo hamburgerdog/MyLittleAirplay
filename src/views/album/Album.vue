@@ -1,5 +1,9 @@
 <template>
-  <div @touchstart="handleTouchStart" @touchend="handleTouchEnd">
+  <div
+    class="animate__animated animate__fadeIn"
+    @touchstart="handleTouchStart"
+    @touchend="handleTouchEnd"
+  >
     <album-head :HeaderFromParent="Header"></album-head>
     <div class="app">
       <search class="search"></search>

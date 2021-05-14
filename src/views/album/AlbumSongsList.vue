@@ -28,6 +28,9 @@ export default {
       .then((response) => {
         this.songs = response.data;
       });
+    this.$eventBus.$on('clickAddAlbumSongs', () => {
+      this.$eventBus.$emit('addSongsInAlbum', this.songs);
+    });
   },
 };
 </script>

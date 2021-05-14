@@ -1,5 +1,5 @@
 <template>
-  <div class="list-card" @click="goToAlbum(listCard.albumId)">
+  <div class="list-card" @click="goToAlbum($event,listCard.albumId)">
     <van-image
       class="image"
       :width="listCard.width"
@@ -17,17 +17,31 @@
 import { Image as VanImage } from 'vant';
 
 export default {
+  data() {
+    return {
+      canPulse: true,
+    };
+  },
+  props: ['listCard'],
   components: {
     VanImage,
   },
   methods: {
-    goToAlbum(albumId) {
+    goToAlbum(event, albumId) {
+      if (albumId === undefined) {
+        this.$global.deBounceAddAnimate(
+          event.srcElement.parentElement,
+          'animate__rubberBand',
+          this.canPulse,
+          2000,
+        );
+        return;
+      }
       this.$eventBus.$emit('changeRouter', {
         path: `/album/${albumId}`,
       });
     },
   },
-  props: ['listCard'],
 };
 </script>
 

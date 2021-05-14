@@ -1,6 +1,8 @@
 <template>
   <div>
-    <splice-bar :info="info"></splice-bar>
+    <div class="song-splice">
+      <splice-bar :info="info"></splice-bar>
+    </div>
     <song-item
       class="song-item"
       v-for="song in songs"
@@ -21,6 +23,7 @@ export default {
       info: {
         engText: 'AIR Track',
         zhText: '歌曲',
+        unshow: true,
       },
       songs: [],
     };
@@ -38,6 +41,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.song-splice{
+  padding: 0.5rem 0;
+}
 .song-item {
   margin-top: 0.5rem;
 }

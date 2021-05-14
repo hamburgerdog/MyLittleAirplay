@@ -3,7 +3,7 @@
     <p>
       <span>{{ info.engText }}</span>_{{ info.zhText }}
     </p>
-    <span class="list-icon">›</span>
+    <span v-show="!info.unshow" class="list-icon">›</span>
   </div>
 </template>
 

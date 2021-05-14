@@ -50,6 +50,11 @@ export default {
     this.$eventBus.$on('changeRouter', (load) => {
       this.$router.push(load.path);
     });
+    this.$eventBus.$on('addSongsInAlbum', (songs) => {
+      songs.forEach((song) => {
+        this.addSong(song);
+      });
+    });
   },
   router,
 };
