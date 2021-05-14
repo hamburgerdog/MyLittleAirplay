@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import { Lazyload } from 'vant';
+import animate from 'animate.css';
 
 import base from '@/api/base';
 import App from './App.vue';
@@ -9,6 +10,7 @@ import api from './api';
 
 // 全局注册
 Vue.use(Lazyload);
+Vue.use(animate);
 Vue.prototype.$global = global_;
 Vue.prototype.$base = base;
 Vue.prototype.$eventBus = new Vue();

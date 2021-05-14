@@ -1,7 +1,7 @@
 <template>
   <div class="random-play">
     <div class="image">
-      <div>
+      <div @click="bounce">
         <van-image
           width="3.5rem"
           height="3.5rem"
@@ -10,7 +10,7 @@
           :src="randomImage1"
         />
       </div>
-      <div>
+      <div @click="bounce">
         <van-image
           width="3.8rem"
           height="3.8rem"
@@ -30,7 +30,7 @@
       </div>
     </div>
     <div class="left-play-box">
-      <div class="play-text">
+      <div class="play-text" @click="flip">
         <h3>AIR Radio</h3>
         <p>随机心情推荐</p>
       </div>
@@ -52,13 +52,57 @@ export default {
       randomImage1: `${this.$base.mlaUrl}/album/img/4`,
       randomImage2: `${this.$base.mlaUrl}/album/img/6`,
       randomImage3: `${this.$base.mlaUrl}/album/img/5`,
+      canBouce: true, //  用于防抖
+      canJello: true,
+      canFlip: true,
     };
   },
   methods: {
-    click() {
+    click(e) {
       this.$api.song.getRandomSongsWithLimit(1).then((resp) => {
         this.$eventBus.$emit('getRandomSong', resp.data[0]);
       });
+      this.jello(e);
+    },
+    addAnimateClass(element, animateName, delay = 3000) {
+      element.classList.add('animate__animated');
+      element.classList.add(animateName);
+      setTimeout(() => {
+        element.classList.remove(animateName);
+      }, delay);
+    },
+    debounce(fn, canRun, delay = 2000) {
+      if (!canRun) return;
+      // eslint-disable-next-line
+      canRun = false;
+      fn();
+      setTimeout(() => {
+        // eslint-disable-next-line
+        canRun = true;
+      }, delay);
+    },
+    bounce(event) {
+      this.debounce(() => {
+        this.addAnimateClass(event.srcElement, 'animate__bounce');
+      }, this.canBouce);
+    },
+    jello(event) {
+      this.debounce(
+        () => {
+          this.addAnimateClass(event.srcElement, 'animate__jello');
+        },
+        this.canJello,
+        500,
+      );
+    },
+    flip(event) {
+      this.debounce(
+        () => {
+          this.addAnimateClass(event.srcElement.parentElement, 'animate__flip');
+        },
+        this.canFlip,
+        1000,
+      );
     },
   },
 };
@@ -113,6 +157,7 @@ export default {
     text-align: justify;
     text-align-last: justify;
     justify-content: center;
+    cursor: default;
 
     h3 {
       padding: 0;
