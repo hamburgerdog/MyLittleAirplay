@@ -33,7 +33,7 @@ export default {
       },
       AlbumInfoMap,
       startX: 0,
-      changeRouterX: 180,
+      changeRouterX: 120,
     };
   },
   components: {

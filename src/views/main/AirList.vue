@@ -30,8 +30,8 @@ export default {
       },
       listCard1: {
         info: '',
-        imgUrl: `${this.$base.mlaUrl}/album/img/7`,
-        albumId: 7,
+        imgUrl: `${this.$base.mlaUrl}/album/img/9`,
+        albumId: 9,
         width: '8rem',
         height: '7rem',
         radius: '0.3rem',
@@ -46,8 +46,8 @@ export default {
       },
       listCard3: {
         info: '在动物园散步才是正经事',
-        imgUrl: `${this.$base.mlaUrl}/album/img/9`,
-        albumId: 9,
+        imgUrl: `${this.$base.mlaUrl}/album/img/13`,
+        albumId: 13,
         width: '8rem',
         height: '7rem',
         radius: '0.3rem',

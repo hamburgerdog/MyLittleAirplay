@@ -1,15 +1,13 @@
 <template>
-  <div
-    class="app animate__animated animate__fadeIn"
-    @touchstart="handleTouchStart"
-    @touchend="handleTouchEnd"
-  >
+  <div class="app animate__animated animate__fadeIn">
     <main-head class="main-head"></main-head>
     <search class="main-search"></search>
     <main-swipe></main-swipe>
-    <random-play></random-play>
-    <ari-list></ari-list>
-    <song-list></song-list>
+    <div @touchstart="handleTouchStart" @touchend="handleTouchEnd">
+      <random-play></random-play>
+      <ari-list></ari-list>
+      <song-list></song-list>
+    </div>
   </div>
 </template>
 

@@ -56,7 +56,7 @@ export default {
       Albums: [],
       AlbumCoverUrl: this.$base.albumCoverUrl,
       startX: 0,
-      changeRouterX: 180,
+      changeRouterX: 120,
       canFlip: true,
     };
   },
@@ -81,6 +81,9 @@ export default {
     handleTouchEnd(e) {
       if (e.changedTouches[0].clientX - this.startX >= this.changeRouterX) {
         this.$router.back();
+      }
+      if (this.startX - e.changedTouches[0].clientX >= this.changeRouterX) {
+        this.$router.go(1);
       }
     },
     flipX(event) {
