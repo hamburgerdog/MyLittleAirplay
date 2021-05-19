@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { Notify } from 'vant';
 
+//  网络失败的警示，使用vant的通知组件
 const dangerTip = (msg) => {
   Notify({
     background: '#fe5f64',
@@ -8,6 +9,7 @@ const dangerTip = (msg) => {
   });
 };
 
+//  错误处理函数
 const errorHandler = (status, other) => {
   switch (status) {
     case 404:
@@ -21,10 +23,14 @@ const errorHandler = (status, other) => {
   }
 };
 
+//  axios的默认配置
 const instance = axios.create({
+  //  超时时间为10s
   timeout: 1000 * 10,
 });
 instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
+
+//  重点：拦截器！
 instance.interceptors.response.use(
   (res) => {
     if (res.status === 200) {
