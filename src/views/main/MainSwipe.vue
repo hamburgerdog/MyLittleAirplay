@@ -71,14 +71,16 @@ export default {
 <style lang='scss' scoped>
 .my-swipe {
   margin-top: 0.6rem;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  border-radius: 1rem;
+  overflow: hidden;
 }
 
 .van-swipe-item {
   color: #fff;
   font-size: 1rem;
   height: 8.5rem;
-  border-radius: 0.4rem;
-  overflow: hidden;
   text-align: center;
   background-size: cover;
 }
