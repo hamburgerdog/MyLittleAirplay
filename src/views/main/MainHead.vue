@@ -1,6 +1,12 @@
 <template>
   <div class="head">
-    <h2>DISCOVER</h2>
+    <div class="head-title">
+      <h2>{{ title }}</h2>
+      <div class="nav-dot">
+        <div :class="this.firstActive ? 'active' : ''"></div>
+        <div :class="!this.firstActive ? 'active' : ''"></div>
+      </div>
+    </div>
     <van-image
       id="face"
       round
@@ -8,6 +14,7 @@
       width="2.2rem"
       height="2.2rem"
       :src="faceImg"
+      @click="changePage()"
     />
   </div>
 </template>
@@ -25,6 +32,20 @@ export default {
   components: {
     'van-image': Image,
   },
+  methods: {
+    changePage() {
+      if (this.$route.path !== '/collection') {
+        this.$eventBus.$emit('changeRouter', {
+          path: '/collection',
+        });
+      } else {
+        this.$eventBus.$emit('changeRouter', {
+          path: '/home',
+        });
+      }
+    },
+  },
+  props: ['title', 'firstActive'],
 };
 </script>
 <style lang="scss" scoped>
@@ -34,8 +55,31 @@ export default {
   align-items: center;
   background-color: #1a1a1a;
 
-  h2 {
-    color: white;
+  .head-title {
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+      color: white;
+      line-height: 1.6;
+    }
+
+    .nav-dot {
+      display: flex;
+      gap: 0.8rem;
+
+      > div {
+        width: 0.8rem;
+        height: 0.4rem;
+        border-radius: 1rem;
+        background-color: #fff;
+      }
+
+      .active {
+        width: 1.4rem;
+        background-color: yellow;
+      }
+    }
   }
 }
 </style>

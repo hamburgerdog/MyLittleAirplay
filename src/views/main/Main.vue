@@ -1,6 +1,6 @@
 <template>
   <div class="app animate__animated animate__fadeIn">
-    <main-head class="main-head"></main-head>
+    <main-head :title="'DISCOVER'" class="main-head" :firstActive="true"></main-head>
     <search class="main-search"></search>
     <main-swipe></main-swipe>
     <div @touchstart="handleTouchStart" @touchend="handleTouchEnd">
