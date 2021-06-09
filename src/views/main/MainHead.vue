@@ -66,13 +66,13 @@ export default {
 
     .nav-dot {
       display: flex;
-      gap: 0.8rem;
 
       > div {
         width: 0.8rem;
         height: 0.4rem;
         border-radius: 1rem;
         background-color: #fff;
+        margin-right: 0.6rem;
       }
 
       .active {

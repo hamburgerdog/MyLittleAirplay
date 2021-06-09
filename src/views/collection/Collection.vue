@@ -1,6 +1,10 @@
 <template>
   <div class="collection-box animate__animated animate__fadeIn">
-    <main-head :title="'COLLECTION'" class="main-head" :firstActive="false"></main-head>
+    <main-head
+      :title="'COLLECTION'"
+      class="main-head"
+      :firstActive="false"
+    ></main-head>
     <search class="main-search"></search>
     <div class="album-show">
       <van-image
@@ -16,7 +20,7 @@
       <p class="albums-text">喜欢再多留一点</p>
     </div>
     <div class="hr"></div>
-    <splice-bar :info="info"></splice-bar>
+    <splice-bar class="bar" :info="info"></splice-bar>
     <div class="songs-list">
       <song-item
         class="song-item"
@@ -88,8 +92,15 @@ export default {
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
   margin-bottom: 50px;
+
+  > div {
+    margin-bottom: 0.6rem;
+  }
+
+  .bar {
+    margin: 0;
+  }
 
   .album-show {
     display: flex;
@@ -118,8 +129,6 @@ export default {
   }
 
   .songs-list {
-    display: flex;
-    flex-direction: column;
     gap: 0.4rem;
     overflow: scroll;
     height: 44vh;
@@ -129,6 +138,10 @@ export default {
       top: 0rem;
       background: #1b1b1b;
       z-index: 99;
+    }
+
+    .song-item {
+      margin-top: 0.5rem;
     }
   }
 
