@@ -41,6 +41,9 @@ export default {
         theme: '#1a1a1a',
       };
       this.songIds.push(song.id);
+      if (this.audio[0].url === ' ') {
+        this.audio.pop();
+      }
       this.audio.push(song);
     },
   },
