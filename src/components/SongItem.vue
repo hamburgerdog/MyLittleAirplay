@@ -15,7 +15,7 @@
       <p>{{ albumName }}</p>
     </div>
     <div class="more">
-      <van-icon name="ellipsis" />
+      <van-icon ref="icon" name="like" @click.stop="like($event)" />
     </div>
   </div>
 </template>
@@ -37,13 +37,45 @@ export default {
   },
   props: ['song'],
   beforeMount() {
-    this.$api.album.getAlbumNameByAlbumId(this.song.albumId).then((response) => {
-      this.albumName = response.data;
-    });
+    this.$api.album
+      .getAlbumNameByAlbumId(this.song.albumId)
+      .then((response) => {
+        this.albumName = response.data;
+      });
+  },
+  updated() {
+    if (this.song.isCollected) {
+      this.$refs.icon.style.color = 'palevioletred';
+    }
   },
   methods: {
     click() {
       this.$eventBus.$emit('getSongItemReply', this.song);
+    },
+    like() {
+      if (this.song.isCollected) {
+        this.$api.song
+          .removeSongFromCollection(
+            localStorage.getItem('user-id'),
+            this.song.songId,
+          )
+          .then(() => {
+            this.song.isCollected = false;
+            this.$global.songCollection.delete(this.song.songId);
+            this.$refs.icon.style.color = '';
+          });
+      } else {
+        this.$api.song
+          .addSongToCollection(
+            localStorage.getItem('user-id'),
+            this.song.songId,
+          )
+          .then(() => {
+            this.song.isCollected = true;
+            this.$global.songCollection.add(this.song.songId);
+            this.$refs.icon.style.color = 'palevioletred';
+          });
+      }
     },
   },
 };

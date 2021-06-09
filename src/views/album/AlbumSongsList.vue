@@ -27,6 +27,12 @@ export default {
       .getSongsInAlbumById(this.$route.params.id)
       .then((response) => {
         this.songs = response.data;
+        this.songs.forEach((item) => {
+          Object.defineProperty(item, 'isCollected', {
+            value: this.$global.songCollection.has(item.songId),
+            writable: true,
+          });
+        });
       });
     this.$eventBus.$on('clickAddAlbumSongs', () => {
       this.$eventBus.$emit('addSongsInAlbum', this.songs);

@@ -15,14 +15,6 @@ function THORTTLE(fn, delay = 500) {
   };
 }
 
-function addAnimateClass(element, animateName, delay) {
-  element.classList.add('animate__animated');
-  element.classList.add(animateName);
-  setTimeout(() => {
-    element.classList.remove(animateName);
-  }, delay);
-}
-
 function debounce(fn, canRun, delay) {
   if (!canRun) return;
   // eslint-disable-next-line
@@ -31,6 +23,14 @@ function debounce(fn, canRun, delay) {
   setTimeout(() => {
     // eslint-disable-next-line
     canRun = true;
+  }, delay);
+}
+
+function addAnimateClass(element, animateName, delay) {
+  element.classList.add('animate__animated');
+  element.classList.add(animateName);
+  setTimeout(() => {
+    element.classList.remove(animateName);
   }, delay);
 }
 
@@ -44,8 +44,13 @@ function deBounceAddAnimate(element, animateName, canRun, delay = 2000) {
   );
 }
 
+const albumCollection = new Set();
+const songCollection = new Set();
+
 export default {
   THORTTLE,
   deBounceAddAnimate,
+  albumCollection,
+  songCollection,
 };
 </script>

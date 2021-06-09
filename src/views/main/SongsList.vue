@@ -32,16 +32,22 @@ export default {
     SpliceBar,
     SongItem,
   },
-  beforeMount() {
+  mounted() {
     this.$api.song.getRandomSongsWithLimit(5).then((response) => {
       this.songs = response.data;
+      this.songs.forEach((item) => {
+        Object.defineProperty(item, 'isCollected', {
+          value: this.$global.songCollection.has(item.songId),
+          writable: true,
+        });
+      });
     });
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.song-splice{
+.song-splice {
   padding: 0.5rem 0;
 }
 .song-item {

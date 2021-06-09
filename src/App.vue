@@ -44,6 +44,26 @@ export default {
       this.audio.push(song);
     },
   },
+  beforeMount() {
+    const userId = localStorage.getItem('user-id');
+    if (userId === null) {
+      this.$api.user.register().then((res) => {
+        console.log(res);
+        localStorage.setItem('user-id', res.data.uuid);
+      });
+    } else {
+      this.$api.album.getAlbumCollection(userId).then((res) => {
+        res.data.forEach((item) => {
+          this.$global.albumCollection.add(item.albumId);
+        });
+      });
+      this.$api.song.getSongCollection(userId).then((res) => {
+        res.data.forEach((item) => {
+          this.$global.songCollection.add(item.songId);
+        });
+      });
+    }
+  },
   mounted() {
     this.$eventBus.$on('getRandomSong', (load) => this.addSong(load));
     this.$eventBus.$on('getSongItemReply', (load) => this.addSong(load));
