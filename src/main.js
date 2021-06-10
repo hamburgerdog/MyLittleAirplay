@@ -18,6 +18,14 @@ Vue.prototype.$eventBus = new Vue();
 Vue.prototype.$api = api;
 
 Vue.config.productionTip = false;
+const errorHandler = () => {
+  Toast.loading({
+    message: '资源加载中',
+    duration: 1000,
+  });
+};
+Vue.config.errorHandler = errorHandler;
+Vue.prototype.$throw = (err) => { errorHandler(err); };
 
 new Vue({
   router,

@@ -8,6 +8,7 @@
         fit="cover"
         lazy-load
         :src="`${this.base.mlaUrl}/album/img/${song.albumId}`"
+        @error="imgError"
       ></van-image>
     </div>
     <div class="song-info">
@@ -49,6 +50,9 @@ export default {
     }
   },
   methods: {
+    imgError(err) {
+      this.$throw(err);
+    },
     click() {
       this.$eventBus.$emit('getSongItemReply', this.song);
     },

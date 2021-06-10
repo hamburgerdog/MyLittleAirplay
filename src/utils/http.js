@@ -39,13 +39,9 @@ instance.interceptors.response.use(
     return Promise.reject(res);
   },
   (error) => {
-    const { response } = error;
-    if (response) {
-      errorHandler(error.status, error.data.message);
-    } else {
-      dangerTip('【网络错误】网络连接失败');
-    }
-    return Promise.reject(response);
+    // 此处无法捕捉到vant_image专辑图片获取的异常只捕捉通过AXIOS的异常
+    errorHandler(error.status, error.message);
+    return Promise.reject(error);
   },
 );
 

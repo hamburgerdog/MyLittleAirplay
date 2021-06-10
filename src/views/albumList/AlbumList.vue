@@ -29,6 +29,7 @@
         lazy-load
         :radius="Image.radius"
         @click="goToAlbum(album.albumId)"
+        @error="imgError"
       />
       <p class="albums-text">{{ album.albumName }}</p>
       <div class="hr"></div>
@@ -101,6 +102,9 @@ export default {
         closeOnClickOverlay: true,
         duration: delay,
       });
+    },
+    imgError(err) {
+      this.$throw(err);
     },
   },
 };

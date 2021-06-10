@@ -1,5 +1,5 @@
 <template>
-  <div class="list-card" @click="goToAlbum($event,listCard.albumId)">
+  <div class="list-card" @click="goToAlbum($event, listCard.albumId)">
     <van-image
       class="image"
       :width="listCard.width"
@@ -7,6 +7,7 @@
       :radius="listCard.radius"
       fit="cover"
       :src="listCard.imgUrl"
+      @error="imgError()"
     />
     <p>{{ listCard.info }}</p>
     <!-- 刷街必备 | 街头最酷的仔BGM -->
@@ -40,6 +41,9 @@ export default {
       this.$eventBus.$emit('changeRouter', {
         path: `/album/${albumId}`,
       });
+    },
+    imgError(err) {
+      this.$throw(err);
     },
   },
 };
