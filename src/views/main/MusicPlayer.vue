@@ -31,8 +31,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 .mPlayer {
-  left: inherit;
-  right: inherit;
+  left: inherit !important;
+  right: inherit !important;
 }
 @media screen and(min-width:500px) {
   ::v-deep .aplayer.aplayer-fixed .aplayer-body {
