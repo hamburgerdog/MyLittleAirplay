@@ -30,4 +30,15 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.mPlayer {
+  left: inherit;
+  right: inherit;
+}
+@media screen and(min-width:500px) {
+  ::v-deep .aplayer.aplayer-fixed .aplayer-body {
+    max-width: 357px;
+    left: inherit;
+    right: inherit;
+  }
+}
 </style>

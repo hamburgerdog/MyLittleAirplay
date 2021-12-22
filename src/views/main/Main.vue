@@ -68,12 +68,24 @@ search {
   z-index: 5;
 }
 
-.main-head {
-  position: fixed;
-  top: 0;
-  left: 0.8rem;
-  height: 4rem;
-  z-index: 10;
-  width: 91%;
+@media screen and (max-width: 500px) {
+  .main-head {
+    position: fixed;
+    top: 0;
+    left: 0.8rem;
+    height: 4rem;
+    z-index: 10;
+    width: 91%;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .main-head {
+    position: fixed;
+    top: 0;
+    height: 4rem;
+    z-index: 10;
+    width: 340px;
+  }
 }
 </style>

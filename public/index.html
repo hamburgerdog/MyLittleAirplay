@@ -10,14 +10,29 @@
     <%= htmlWebpackPlugin.options.title %>
   </title>
   <style>
-    *{
+    * {
       padding: 0;
       margin: 0;
     }
+
     html {
       font-size: 20px;
       overflow-x: hidden;
       background-color: #1a1a1a;
+    }
+
+    @media screen and (min-width: 500px) {
+      html {
+        background-image: url(./mlabg.svg);
+        background-repeat: repeat;
+      }
+
+      body {
+        margin: auto !important;
+        width: 375px;
+        border: 2px dashed;
+        box-shadow: 3.1px 5.6px 20.2px rgb(0 0 0 / 15%), 8.5px 15.4px 32.3px rgb(0 0 0 / 4%), 20.5px 37.1px 42.2px rgb(0 0 0 / 2%), 68px 123px 80px rgb(0 0 0 / 0%);
+      }
     }
   </style>
 </head>

@@ -59,4 +59,12 @@ i:hover {
     }
   }
 }
+
+@media screen and (min-width: 500px) {
+  .header {
+    width: 359px;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+  }
+}
 </style>

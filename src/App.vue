@@ -84,6 +84,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 div {
+  position: relative;
   background-color: #1a1a1a;
 }
 </style>
