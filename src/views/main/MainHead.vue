@@ -21,7 +21,7 @@
 
 <script>
 import { Image } from 'vant';
-import faceImg from '../../assets/mock/1.jpg';
+import faceImg from '../../assets/mock/1.webp';
 
 export default {
   data() {

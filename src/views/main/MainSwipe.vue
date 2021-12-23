@@ -11,7 +11,7 @@
         v-for="swipe in Swipes"
         :key="swipe.albumId"
         :style="{
-          backgroundImage: `${url}${swipe.albumId}`,
+          backgroundImage: `url(/image/album${swipe.albumId}.webp)`,
         }"
         @click="goSwipeAlbum(swipe.albumId)"
       ></van-swipe-item>
@@ -32,7 +32,6 @@ import { Swipe, SwipeItem } from 'vant';
 export default {
   data() {
     return {
-      url: `url(${this.$base.mlaUrl}/album/img/`,
       current: 0,
       indicators: [{ id: 0 }, { id: 1 }, { id: 2 }, { id: 3 }],
       Swipes: [

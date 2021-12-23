@@ -7,7 +7,7 @@
         radius=".4rem"
         fit="cover"
         lazy-load
-        :src="`${this.base.mlaUrl}/album/img/${song.albumId}`"
+        :src="`/image/album${song.albumId}.webp`"
         @error="imgError"
       ></van-image>
     </div>

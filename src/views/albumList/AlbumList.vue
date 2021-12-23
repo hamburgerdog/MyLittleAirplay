@@ -24,7 +24,7 @@
         class="albums-image"
         :width="Image.width"
         :height="Image.height"
-        :src="AlbumCoverUrl + '/' + album.albumCoverUrl"
+        :src="'/image/album' + album.albumId + '.webp'"
         fit="cover"
         lazy-load
         :radius="Image.radius"
@@ -39,7 +39,7 @@
 
 <script>
 import { Image as VanImage } from 'vant';
-import image from '../../assets/mock/albums.jpeg';
+import image from '../../assets/mock/albums.webp';
 import AppHead from '../../components/RouterBackHead.vue';
 
 export default {

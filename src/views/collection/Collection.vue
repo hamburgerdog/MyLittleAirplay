@@ -38,7 +38,7 @@
 
 <script>
 import { Image as VanImage } from 'vant';
-import image from '@/assets/mock/albums.jpeg';
+import image from '@/assets/mock/albums.webp';
 
 import MainHead from '@/views/main/MainHead.vue';
 import Search from '@/components/MySearch.vue';

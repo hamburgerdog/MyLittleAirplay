@@ -20,7 +20,7 @@ export default {
           name: '欢迎来到我的小型飞机场',
           artist: 'my-little-airport',
           url: ' ',
-          cover: `${this.$base.mlaUrl}/album/img/2`,
+          cover: '/image/album2.webp',
           theme: '#1a1a1a',
         },
       ],

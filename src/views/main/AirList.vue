@@ -30,7 +30,7 @@ export default {
       },
       listCard1: {
         info: '',
-        imgUrl: `${this.$base.mlaUrl}/album/img/9`,
+        imgUrl: '/image/album9.webp',
         albumId: 9,
         width: '8rem',
         height: '7rem',
@@ -38,7 +38,7 @@ export default {
       },
       listCard2: {
         info: '總在一星期 有一天真的不想返工',
-        imgUrl: `${this.$base.mlaUrl}/album/img/11`,
+        imgUrl: '/image/album11.webp',
         albumId: 11,
         width: '8rem',
         height: '7rem',
@@ -46,7 +46,7 @@ export default {
       },
       listCard3: {
         info: '在动物园散步才是正经事',
-        imgUrl: `${this.$base.mlaUrl}/album/img/13`,
+        imgUrl: '/image/album13.webp',
         albumId: 13,
         width: '8rem',
         height: '7rem',

@@ -2,31 +2,13 @@
   <div class="random-play">
     <div class="image">
       <div @click="bounce">
-        <van-image
-          width="3.5rem"
-          height="3.5rem"
-          radius="0.5rem"
-          fit="cover"
-          :src="randomImage1"
-        />
+        <van-image width="3.5rem" height="3.5rem" radius="0.5rem" fit="cover" :src="randomImage1" />
       </div>
       <div @click="bounce">
-        <van-image
-          width="3.8rem"
-          height="3.8rem"
-          radius="0.8rem"
-          fit="cover"
-          :src="randomImage2"
-        />
+        <van-image width="3.8rem" height="3.8rem" radius="0.8rem" fit="cover" :src="randomImage2" />
       </div>
       <div>
-        <van-image
-          width="3.5rem"
-          height="3.5rem"
-          radius="0.5rem"
-          fit="cover"
-          :src="randomImage3"
-        />
+        <van-image width="3.5rem" height="3.5rem" radius="0.5rem" fit="cover" :src="randomImage3" />
       </div>
     </div>
     <div class="left-play-box">
@@ -49,9 +31,9 @@ export default {
   },
   data() {
     return {
-      randomImage1: `${this.$base.mlaUrl}/album/img/4`,
-      randomImage2: `${this.$base.mlaUrl}/album/img/6`,
-      randomImage3: `${this.$base.mlaUrl}/album/img/5`,
+      randomImage1: '/image/album4.webp',
+      randomImage2: '/image/album6.webp',
+      randomImage3: '/image/album5.webp',
       canBouce: true, //  用于防抖
       canJello: true,
       canFlip: true,

@@ -46,7 +46,7 @@ export default {
     this.$api.album.getAlbumById(this.$route.params.id).then((response) => {
       this.$eventBus.$emit(
         'getAlbumCoverUrl',
-        `${this.$base.albumCoverUrl}/${response.data.albumCoverUrl}`,
+        `/image/album${this.$route.params.id}.webp`,
       );
       const albumInfo = this.AlbumInfoMap.get(`${response.data.albumId}`);
       this.Header.text = albumInfo.cardText;
