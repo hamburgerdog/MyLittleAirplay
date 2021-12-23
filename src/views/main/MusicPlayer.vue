@@ -40,5 +40,9 @@ export default {
     left: inherit;
     right: inherit;
   }
+
+  .mPlayer {
+    width: 375px;
+  }
 }
 </style>
